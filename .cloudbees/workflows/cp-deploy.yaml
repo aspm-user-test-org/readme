@@ -1,0 +1,15 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: workflow
+name: CP Deploy
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    steps:
+      - uses: cloudbees-io/register-deployed-artifact@v2
+        with:
+          labels: QA1
+          artifact-id: f5cdb068-4fc2-4fd8-b3f0-16712f6fe966
+          target-environment: QA-env
